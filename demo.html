@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+</head>
+<body>
+	<div id="div">
+		<button id="btn">按钮</button>
+		<a id="aid" href="http://www.jikexueyuan.com">极客学院</a>
+	</div>
+
+	<!--<script>-->
+		<!--var btn = document.getElementById('btn');-->
+		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序1");}//1,2将会被最后一个3覆盖掉-->
+		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序2");}-->
+		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序3");}-->
+	<!--</script>-->
+	<!--<script>-->
+		<!--var btn = document.getElementById('btn');-->
+		<!--btn.addEventListener("click",demo1);-->
+		<!--btn.addEventListener("click",demo2);-->
+		<!--btn.addEventListener("click",demo3);-->
+		<!--function demo1(){-->
+			<!--alert("这是DOM二级事件处理程序1");-->
+		<!--}-->
+		<!--function demo2(){-->
+			<!--alert("这是DOM二级事件处理程序2");-->
+		<!--}-->
+		<!--function demo3(){-->
+			<!--alert("这是DOM二级事件处理程序3");-->
+		<!--}-->
+		<!--btn.removeEventListener("click",demo1);-->
+	<!--</script>-->
+	<!--<script>-->
+		<!--var btn = document.getElementById('btn');-->
+		<!--if(btn.addEventListener){-->
+			<!--btn.addEventListener("click",demo);-->
+		<!--}else if(btn.attachEvent){-->
+			<!--btn.attachEvent("onclick",demo);-->
+		<!--}-->
+		<!--else{-->
+			<!--btn.onclick = demo();-->
+		<!--}-->
+		<!--function demo(){-->
+			<!--alert("这是DOM二级处理事件程序");-->
+		<!--}-->
+
+	<!--</script>-->
+	<script>
+		document.getElementById("btn").addEventListener("click",showType);
+		document.getElementById("div").addEventListener("click",showType);
+		document.getElementById("aid").addEventListener("click",showA);
+		function showType(event){
+			alert(event.type);
+//			event.stopPropagation();//阻止事件冒泡
+		}
+
+		function showA(event){
+			event.stopPropagation();
+			alert(event.type);
+//			event.stopPropagation();
+			event.preventDefault();
+		}
+	</script>
+</body>
+</html>
