@@ -1,92 +1,101 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>对象</title>
+	<title>DOM控制HTML元素和流浪器对象</title>
 </head>
-<body onload="timeStart()">
+<body onload="myWin()">
+	<!--<ul><li>1</li><li>2</li><li>3</li></ul>-->
+	<!--<ul>-->
+		<!--<li>4</li>-->
+		<!--<li>5</li>-->
+		<!--<li>6</li>-->
+	<!--</ul>-->
+	<!--<div>-->
+		<!--<button onclick="stopWin()">按钮</button>-->
+		<!--<p id="pid">承载内容</p>-->
+	<!--</div>-->
+	<!--<a id="aid" href="#">这是一个链接，用于测试</a></body><br/>-->
 	<!--<script>-->
-<!--//		person = new Object();-->
-<!--//		person.name = "iwen";-->
-<!--////		alert(person.name);-->
-<!--//		person.age = 24;-->
-<!--//		person.eyecolor = blue;-->
-<!--//		alert(person.eyecolor);-->
-<!--////		document.write("姓名："+person.name+"年龄："+person.age+"眼睛的颜色："+person.eyecolor);-->
-<!--//		person = {name:"iwen",age:"30"};-->
-<!--//		document.write(person.name+"&nbspis&nbsp"+person.age+"&nbspyears old！")-->
+		<!--var anode = document.getElementById("aid");-->
+		<!--var str = anode.setAttribute("title","这是a的动态属性");-->
+		<!--var strr = anode.getAttribute("title");-->
+		<!--document.write(strr);-->
+	<!--</script>-->
+	<!--<script>-->
+	<!--//子节点-
+		<!--function getChildNode(){-->
+			<!--var childNode1 = document.getElementsByTagName("ul")[0].childNodes;-->
+			<!--var childNode2 = document.getElementsByTagName("ul")[1].childNodes;-->
+			<!--alert(childNode1.length);-->
+			<!--document.write(childNode2.length);-->
+			<!--alert(childNode1[0].nodeType);-->
+			<!--document.write(childNode2[0].nodeType);-->
+		<!--}-->
+		<!--getChildNode();-->
+	<!--</script>-->
+	<!--<script>-->
+		<!--//父节点-->
+		<!--function parentNode(){-->
+			<!--var div = document.getElementById("pid");-->
+			<!--document.write(div.parentNode.nodeName);-->
+		<!--}-->
+		<!--parentNode();-->
 
-			<!--//函数对象创建-->
-		<!--function people(name,age){-->
-			<!--this.name = name;-->
-			<!--this.age = age;-->
+		<!--//添加子节点-->
+		<!--function createNode(){-->
+			<!--var input = document.createElement("input");-->
+			<!--input.type = "button";-->
+			<!--input.value = "按钮";-->
+			<!--document.body.appendChild(input);-->
+		<!--}-->
+		<!--createNode();-->
+	<!--</script>-->
+	<!--<script>-->
+		<!--var mytime = setInterval(function(){-->
+			<!--getTime();-->
+		<!--},1000);-->
+		<!--function getTime(){-->
+			<!--var date = new Date();-->
+			<!--var t = date.toLocaleTimeString();-->
+			<!--document.getElementById("pid").innerHTML = t;-->
 		<!--}-->
 
-		<!--son = new people("iwen",30);-->
-		<!--document.write(son.name+"&nbspis&nbsp"+son.age+"&nbspyears&nbspold!");-->
-	<!--</script>-->
-
-<!--string对象-->
-	<!--<script>-->
-		<!--var str = "hello world";-->
-		<!--var str1 = "hello|jike|xueyuan";-->
-		<!--//常用的属性和方法-->
-		<!--document.write("字符串长度："+str.length);-->
-		<!--document.write("<br/>"+str.indexOf("world1"));-->
-		<!--document.write("<br/>"+str.match("world1"));-->
-		<!--document.write("<br/>"+str.replace("world","wushiyuan"));-->
-		<!--var s = str1.split("|",2);-->
-		<!--document.write("<br/>"+s[0]);-->
-		<!--document.write("<br/>"+s[1]);-->
-		<!--document.write("<br/>"+s[2]);-->
-	<!--</script>-->
-
-<!--Date事件对象-->
-	<!--<div id="txt" style="margin: auto;width: 80px;height: 20px;background-color: aqua"></div>-->
-	<!--<script>-->
-<!--//		var myDate = new Date();-->
-<!--//		document.write(myDate);-->
-<!--//		if(myDate.constructor == Date){-->
-<!--//			alert("This is a Date");-->
-<!--//		}else {-->
-<!--//			alert("This is not a Date");-->
-<!--//		}-->
-<!--//		document.write(myDate.getFullYear());-->
-<!--////		document.write("<br/>"+myDate.getTime());-->
-<!--//		myDate.setFullYear(2012,1,1);-->
-<!--//		document.write("<br/>"+myDate);-->
-
-<!--//简单的时间计时器-->
-		<!--function timeStart(){-->
-			<!--var myDate = new Date();-->
-			<!--var h = myDate.getHours();-->
-			<!--var m = myDate.getMinutes();-->
-			<!--var s = myDate.getSeconds();-->
-			<!--m = checkTime(m);-->
-			<!--s = checkTime(s);-->
-			<!--document.getElementById("txt").innerHTML = h+":"+m+":"+s;-->
-			<!--t = setTimeout(function(){-->
-				<!--timeStart();-->
-			<!--},500);-->
+		<!--function stopTime(){-->
+			<!--clearInterval(mytime);-->
 		<!--}-->
-<!--//		做出00:00:00的效果-->
-			<!--function checkTime(i){-->
-				<!--if(i<10){-->
-					<!--i="0"+i;-->
-				<!--}-->
-				<!--return i;-->
+	<!--</script>-->
+	<!--<script>-->
+		<!--var Win;-->
+		<!--function myWin(){-->
+			<!--alert("hello,world");-->
+			<!--Win = setTimeout(function(){-->
+				<!--myWin();-->
+			<!--},2000);-->
+		<!--}-->
+
+		<!--function stopWin(){-->
+			<!--clearTimeout(Win);-->
+		<!--}-->
+	<!--</script>-->
+	<!--<a href="obindex.html">点我</a>-->
+	<!--<button id="btn" onclick="goOb()">点我回去</button>-->
+	<!--<script>-->
+		<!--function goOb(){-->
+			<!--history.forward();-->
+		<!--}-->
+	<!--</script>-->
+	<!--<input type="text" id="username">-->
+	<!--<button id="btn" onclick="safe()">登陆</button>-->
+	<!--<script>-->
+		<!--function safe(){-->
+			<!--var name = document.getElementById("username").value;-->
+			<!--if(name == "hello"){-->
+				<!--history.go(-1);-->
+			<!--}else{-->
+				<!--alert("用户名不对");-->
+			<!--}-->
 			<!--}-->
 	<!--</script>-->
-<!--数组对象-->
-	<!--<script>-->
-		<!--var a = [1,2,3];-->
-		<!--document.write(a.concat(4,5));-->
-		<!--var b = ["a","c","b","e","d"];-->
-		<!--document.write("<br/>"+b.sort());-->
-	<!--</script>-->
-
-<!--Math数学对象-->
-	<script>
-		document.write(Math.random()*10);
-	</script>
+	<script src="app1.js"></script>
 </body>
 </html>
