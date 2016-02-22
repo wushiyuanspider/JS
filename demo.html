@@ -1,66 +1,92 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>事件</title>
+	<title>对象</title>
 </head>
-<body>
-	<div id="div">
-		<button id="btn">按钮</button>
-		<a id="aid" href="http://www.jikexueyuan.com">极客学院</a>
-	</div>
+<body onload="timeStart()">
+	<!--<script>-->
+<!--//		person = new Object();-->
+<!--//		person.name = "iwen";-->
+<!--////		alert(person.name);-->
+<!--//		person.age = 24;-->
+<!--//		person.eyecolor = blue;-->
+<!--//		alert(person.eyecolor);-->
+<!--////		document.write("姓名："+person.name+"年龄："+person.age+"眼睛的颜色："+person.eyecolor);-->
+<!--//		person = {name:"iwen",age:"30"};-->
+<!--//		document.write(person.name+"&nbspis&nbsp"+person.age+"&nbspyears old！")-->
 
-	<!--<script>-->
-		<!--var btn = document.getElementById('btn');-->
-		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序1");}//1,2将会被最后一个3覆盖掉-->
-		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序2");}-->
-		<!--btn.onclick = function(){alert("这是DOM0级事件处理程序3");}-->
-	<!--</script>-->
-	<!--<script>-->
-		<!--var btn = document.getElementById('btn');-->
-		<!--btn.addEventListener("click",demo1);-->
-		<!--btn.addEventListener("click",demo2);-->
-		<!--btn.addEventListener("click",demo3);-->
-		<!--function demo1(){-->
-			<!--alert("这是DOM二级事件处理程序1");-->
-		<!--}-->
-		<!--function demo2(){-->
-			<!--alert("这是DOM二级事件处理程序2");-->
-		<!--}-->
-		<!--function demo3(){-->
-			<!--alert("这是DOM二级事件处理程序3");-->
-		<!--}-->
-		<!--btn.removeEventListener("click",demo1);-->
-	<!--</script>-->
-	<!--<script>-->
-		<!--var btn = document.getElementById('btn');-->
-		<!--if(btn.addEventListener){-->
-			<!--btn.addEventListener("click",demo);-->
-		<!--}else if(btn.attachEvent){-->
-			<!--btn.attachEvent("onclick",demo);-->
-		<!--}-->
-		<!--else{-->
-			<!--btn.onclick = demo();-->
-		<!--}-->
-		<!--function demo(){-->
-			<!--alert("这是DOM二级处理事件程序");-->
+			<!--//函数对象创建-->
+		<!--function people(name,age){-->
+			<!--this.name = name;-->
+			<!--this.age = age;-->
 		<!--}-->
 
+		<!--son = new people("iwen",30);-->
+		<!--document.write(son.name+"&nbspis&nbsp"+son.age+"&nbspyears&nbspold!");-->
 	<!--</script>-->
+
+<!--string对象-->
+	<!--<script>-->
+		<!--var str = "hello world";-->
+		<!--var str1 = "hello|jike|xueyuan";-->
+		<!--//常用的属性和方法-->
+		<!--document.write("字符串长度："+str.length);-->
+		<!--document.write("<br/>"+str.indexOf("world1"));-->
+		<!--document.write("<br/>"+str.match("world1"));-->
+		<!--document.write("<br/>"+str.replace("world","wushiyuan"));-->
+		<!--var s = str1.split("|",2);-->
+		<!--document.write("<br/>"+s[0]);-->
+		<!--document.write("<br/>"+s[1]);-->
+		<!--document.write("<br/>"+s[2]);-->
+	<!--</script>-->
+
+<!--Date事件对象-->
+	<!--<div id="txt" style="margin: auto;width: 80px;height: 20px;background-color: aqua"></div>-->
+	<!--<script>-->
+<!--//		var myDate = new Date();-->
+<!--//		document.write(myDate);-->
+<!--//		if(myDate.constructor == Date){-->
+<!--//			alert("This is a Date");-->
+<!--//		}else {-->
+<!--//			alert("This is not a Date");-->
+<!--//		}-->
+<!--//		document.write(myDate.getFullYear());-->
+<!--////		document.write("<br/>"+myDate.getTime());-->
+<!--//		myDate.setFullYear(2012,1,1);-->
+<!--//		document.write("<br/>"+myDate);-->
+
+<!--//简单的时间计时器-->
+		<!--function timeStart(){-->
+			<!--var myDate = new Date();-->
+			<!--var h = myDate.getHours();-->
+			<!--var m = myDate.getMinutes();-->
+			<!--var s = myDate.getSeconds();-->
+			<!--m = checkTime(m);-->
+			<!--s = checkTime(s);-->
+			<!--document.getElementById("txt").innerHTML = h+":"+m+":"+s;-->
+			<!--t = setTimeout(function(){-->
+				<!--timeStart();-->
+			<!--},500);-->
+		<!--}-->
+<!--//		做出00:00:00的效果-->
+			<!--function checkTime(i){-->
+				<!--if(i<10){-->
+					<!--i="0"+i;-->
+				<!--}-->
+				<!--return i;-->
+			<!--}-->
+	<!--</script>-->
+<!--数组对象-->
+	<!--<script>-->
+		<!--var a = [1,2,3];-->
+		<!--document.write(a.concat(4,5));-->
+		<!--var b = ["a","c","b","e","d"];-->
+		<!--document.write("<br/>"+b.sort());-->
+	<!--</script>-->
+
+<!--Math数学对象-->
 	<script>
-		document.getElementById("btn").addEventListener("click",showType);
-		document.getElementById("div").addEventListener("click",showType);
-		document.getElementById("aid").addEventListener("click",showA);
-		function showType(event){
-			alert(event.type);
-//			event.stopPropagation();//阻止事件冒泡
-		}
-
-		function showA(event){
-			event.stopPropagation();
-			alert(event.type);
-//			event.stopPropagation();
-			event.preventDefault();
-		}
+		document.write(Math.random()*10);
 	</script>
 </body>
 </html>
