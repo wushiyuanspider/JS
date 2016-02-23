@@ -29,16 +29,16 @@
 +		<span class="status1">请输入用户名</span>
 +		<br />
 +		输入密码：<input type="password" name="pwd">
-+		<span>请输入用户密码</span>
++		<span class="status1">请输入用户密码</span>
 +		<br />
 +		确定密码：<input type="password" name="pwdchk">
-+		<span>请输入用户确认密码</span>
++		<span class="status1">请输入用户确认密码</span>
 +		<br />
 +		邮箱：<input type="text" name="email">
-+		<span id="ema">请输入邮箱</span>
++		<span class="status1">请输入邮箱</span>
 +		<br />
 +		其他：<input type="text" name="other">
-+		<span>请输入其他</span>
++		<span class="status1">请输入其他</span>
 +		<br />
 +		提交：<input type="button" name="btn" value="提交">
 +	</form>
@@ -51,6 +51,27 @@
 				return nobj.nextSibling;
 		}
 	}
+	
+	function check(obj,info,fun){
+				var sp = gspan(obj);
+				obj.onfocus = function(){
+				sp.innerHTML = info;
+				sp.className = "status2";
+			}
+
+			    obj.onblur = function(){
+				if(fun(this.value)){
+					sp.innerHTML = "输入正确";
+					sp.className = "status4";
+				}else{
+					sp.innerHTML = info;
+					sp.className = "status3";
+				}
+
+			}
+
+	}
+	
 	function login(){
 			var username = document.getElementsByName("username")[0];
 			var pwd = document.getElementsByName("pwd")[0];
@@ -58,25 +79,36 @@
 			var email = document.getElementsByName("email")[0];
 			var other = document.getElementsByName("other")[0];
 			var btn = document.getElementsByName("btn")[0];
+			
+			check(username,"请输入3-20个字符",function(val){
+						if(val.match(/^\S+$/) && val.length >= 3 && val.length <= 20){
+							return true;
+						}else
+							return false;
+					});
 
-			username.onfocus = function(){
-				var sp = gspan(username);
-				sp.innerHTML = "请输入3-20位字符";
-				sp.className = "status2";
+			check(pwd,"请输入6-20个字符",function(val){
+						if(val.match(/^\S+$/) && val.length >= 6 && val.length <= 20){
+							return true;
+						}else
+							return false;
+					});
+			
+			check(pwdchk,"输入的字符请和上面的相同",function(val){
+						if(val.match(/^\S+$/) && val.length >= 6 && val.length <= 20 && val == pwd.value){
+							return true;
+						}else
+							return false;
+
+					});
+
+			check(email,"请按邮箱规则填写",function(val){
+					if(val.match(/\w+@+\w+\.+\w/)){
+						return true;
+					}else
+						return false;
+					});
 			}
-
-			username.onblur = function(){
-				var sp = gspan(username);
-				if(username.value.match(/^\S+$/) && username.value.length > 3 && username.value.length <= 20){
-					sp.innerHTML = "输入正确";
-					sp.className = "status4";
-				}else{
-					sp.innerHTML = "请输入3-20位字符";
-					sp.className = "status3";
-				}
-
-			}
-	}
 	
 
 </script>
