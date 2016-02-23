@@ -1,0 +1,84 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>form表单验证--用户登录</title>
+	<style>
+		span{
+			font-size: 12px;
+		}
+	
+		.status1{
+			color: #aaa;
+		}
+
+		.status2{
+			color: #000;
+		}
+
+		.status3{
+			color: red;
+		}
+
+		.status4{
+			color: green;
+		}
+	}
+	</style>
+</head>
+<body>
+	<form action="reg" method="post">
+		用户名:<input type="text" name="username" onclick="">
+		<span class="status1">请输入用户名</span>
+		<br />
+		输入密码：<input type="password" name="pwd">
+		<span>请输入用户密码</span>
+		<br />
+		确定密码：<input type="password" name="pwdchk">
+		<span>请输入用户确认密码</span>
+		<br />
+		邮箱：<input type="text" name="email">
+		<span id="ema">请输入邮箱</span>
+		<br />
+		其他：<input type="text" name="other">
+		<span>请输入其他</span>
+		<br />
+		提交：<input type="button" name="btn" value="提交">
+	</form>
+
+	<script>
+		function gspan(cobj){
+			while(true){
+				if(cobj.nextSibling.nodeName!=="SPAN")
+				cobj=cobj.nextSibling;
+				else
+				return cobj.nextSibling;	
+		}
+}
+		onload=function(){
+			var username = document.getElementsByName("username")[0];
+			var pwd = document.getElementsByName("pwd")[0];
+			var pwdchk =document.getElementsByName("pwdchk")[0];
+			var email = document.getElementsByName("email")[0];
+			var other = document.getElementsByName("other")[0];
+			var btn = document.getElementsByName("btn")[0];
+			
+			username.onfocus = function(){
+				var sp = gspan(username);
+				sp.innerHTML = "用户名长度要在3-20之间";
+				sp.ClassName = "status2";
+			}
+
+			username.onblur = function(){
+				var sp = gspan(username);
+				if(username.value.match(/^\s+$/) && username.value.length >= 3 && username.value.length <= 20){
+				sp.innerHTML = "输入正确";
+				sp.className = "status4";
+				}else{
+					sp.innerHTML = "用户名长度要在3-20之间";
+					sp.className =　"status3"
+				}
+		}
+}
+	</script>
+</body>	
+</html>	
