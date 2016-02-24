@@ -1,101 +1,35 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>DOM控制HTML元素和流浪器对象</title>
-</head>
-<body onload="myWin()">
-	<!--<ul><li>1</li><li>2</li><li>3</li></ul>-->
-	<!--<ul>-->
-		<!--<li>4</li>-->
-		<!--<li>5</li>-->
-		<!--<li>6</li>-->
-	<!--</ul>-->
-	<!--<div>-->
-		<!--<button onclick="stopWin()">按钮</button>-->
-		<!--<p id="pid">承载内容</p>-->
-	<!--</div>-->
-	<!--<a id="aid" href="#">这是一个链接，用于测试</a></body><br/>-->
-	<!--<script>-->
-		<!--var anode = document.getElementById("aid");-->
-		<!--var str = anode.setAttribute("title","这是a的动态属性");-->
-		<!--var strr = anode.getAttribute("title");-->
-		<!--document.write(strr);-->
-	<!--</script>-->
-	<!--<script>-->
-	<!--//子节点-
-		<!--function getChildNode(){-->
-			<!--var childNode1 = document.getElementsByTagName("ul")[0].childNodes;-->
-			<!--var childNode2 = document.getElementsByTagName("ul")[1].childNodes;-->
-			<!--alert(childNode1.length);-->
-			<!--document.write(childNode2.length);-->
-			<!--alert(childNode1[0].nodeType);-->
-			<!--document.write(childNode2[0].nodeType);-->
-		<!--}-->
-		<!--getChildNode();-->
-	<!--</script>-->
-	<!--<script>-->
-		<!--//父节点-->
-		<!--function parentNode(){-->
-			<!--var div = document.getElementById("pid");-->
-			<!--document.write(div.parentNode.nodeName);-->
-		<!--}-->
-		<!--parentNode();-->
+<title>test</title>
+</head>	
+<body>
+<script>
+(function(){
+		function People(name){
+		this.name = name;
+	}
+	People.prototype.say = function(){
+		alert("peo-hello"+this.name);
+	}
+	window.People = People;
+ }());
+	
+(function(){
+	function Student(name){
+		this.name = name;
+	}
+	
+	Student.prototype = new People();
+	var superSay = Student.prototype.say;
+	Student.prototype.say = function(){
+		alert("stu-hello"+this.name);
+		superSay.call(this);
+	}	
+	window.Student = Student;
+ }());
+		var s = new Student("wushiyuan");
 
-		<!--//添加子节点-->
-		<!--function createNode(){-->
-			<!--var input = document.createElement("input");-->
-			<!--input.type = "button";-->
-			<!--input.value = "按钮";-->
-			<!--document.body.appendChild(input);-->
-		<!--}-->
-		<!--createNode();-->
-	<!--</script>-->
-	<!--<script>-->
-		<!--var mytime = setInterval(function(){-->
-			<!--getTime();-->
-		<!--},1000);-->
-		<!--function getTime(){-->
-			<!--var date = new Date();-->
-			<!--var t = date.toLocaleTimeString();-->
-			<!--document.getElementById("pid").innerHTML = t;-->
-		<!--}-->
-
-		<!--function stopTime(){-->
-			<!--clearInterval(mytime);-->
-		<!--}-->
-	<!--</script>-->
-	<!--<script>-->
-		<!--var Win;-->
-		<!--function myWin(){-->
-			<!--alert("hello,world");-->
-			<!--Win = setTimeout(function(){-->
-				<!--myWin();-->
-			<!--},2000);-->
-		<!--}-->
-
-		<!--function stopWin(){-->
-			<!--clearTimeout(Win);-->
-		<!--}-->
-	<!--</script>-->
-	<!--<a href="obindex.html">点我</a>-->
-	<!--<button id="btn" onclick="goOb()">点我回去</button>-->
-	<!--<script>-->
-		<!--function goOb(){-->
-			<!--history.forward();-->
-		<!--}-->
-	<!--</script>-->
-	<!--<input type="text" id="username">-->
-	<!--<button id="btn" onclick="safe()">登陆</button>-->
-	<!--<script>-->
-		<!--function safe(){-->
-			<!--var name = document.getElementById("username").value;-->
-			<!--if(name == "hello"){-->
-				<!--history.go(-1);-->
-			<!--}else{-->
-				<!--alert("用户名不对");-->
-			<!--}-->
-			<!--}-->
-	<!--</script>-->
-	<script src="app1.js"></script>
-</body>
+	s.say();
+</script>
+</body>	
 </html>
