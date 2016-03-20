@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style>
+	span{
+		font-size: 12px;
+	}
+	.status1{
+		color: #aaa;
+	}
+
+	.status2{
+		color: #000;
+	}
+
+	.status3{
+		color: red;
+	}
+
+	.status4{
+		color: green;
+	}
+</style>
+</head>	
+<body onload="login()">
+	<form action="reg" method="post">
++		用户名:<input type="text" name="username" onclick="">
++		<span class="status1">请输入用户名</span>
++		<br />
++		输入密码：<input type="password" name="pwd">
++		<span class="status1">请输入用户密码</span>
++		<br />
++		确定密码：<input type="password" name="pwdchk">
++		<span class="status1">请输入用户确认密码</span>
++		<br />
++		邮箱：<input type="text" name="email">
++		<span class="status1">请输入邮箱</span>
++		<br />
++		其他：<input type="text" name="other">
++		<span class="status1">请输入其他</span>
++		<br />
++		提交：<input type="button" name="btn" value="提交">
++	</form>
+<script>
+	function gspan(nobj){
+		while(true){
+			if(nobj.nextSibling.nodeName !== "SPAN"){
+				nobj = nobj.nextSibling;
+			}else
+				return nobj.nextSibling;
+		}
+	}
+	
+	function check(obj,info,fun){
+				var sp = gspan(obj);
+				obj.onfocus = function(){
+				sp.innerHTML = info;
+				sp.className = "status2";
+			}
+
+			    obj.onblur = function(){
+				if(fun(this.value)){
+					sp.innerHTML = "输入正确";
+					sp.className = "status4";
+				}else{
+					sp.innerHTML = info;
+					sp.className = "status3";
+				}
+
+			}
+
+	}
+	
+	function login(){
+			var username = document.getElementsByName("username")[0];
+			var pwd = document.getElementsByName("pwd")[0];
+			var pwdchk = document.getElementsByName("pwdchk")[0];
+			var email = document.getElementsByName("email")[0];
+			var other = document.getElementsByName("other")[0];
+			var btn = document.getElementsByName("btn")[0];
+			
+			check(username,"请输入3-20个字符",function(val){
+						if(val.match(/^\S+$/) && val.length >= 3 && val.length <= 20){
+							return true;
+						}else
+							return false;
+					});
+
+			check(pwd,"请输入6-20个字符",function(val){
+						if(val.match(/^\S+$/) && val.length >= 6 && val.length <= 20){
+							return true;
+						}else
+							return false;
+					});
+			
+			check(pwdchk,"输入的字符请和上面的相同",function(val){
+						if(val.match(/^\S+$/) && val.length >= 6 && val.length <= 20 && val == pwd.value){
+							return true;
+						}else
+							return false;
+
+					});
+
+			check(email,"请按邮箱规则填写",function(val){
+					if(val.match(/\w+@+\w+\.+\w/)){
+						return true;
+					}else
+						return false;
+					});
+			}
+	
+
+</script>
+</body>	
+</html>

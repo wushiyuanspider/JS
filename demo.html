@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>test</title>
+</head>	
+<body>
+<script>
+(function(){
+		function People(name){
+		this.name = name;
+	}
+	People.prototype.say = function(){
+		alert("peo-hello"+this.name);
+	}
+	window.People = People;
+ }());
+	
+(function(){
+	function Student(name){
+		this.name = name;
+	}
+	
+	Student.prototype = new People();
+	var superSay = Student.prototype.say;
+	Student.prototype.say = function(){
+		alert("stu-hello"+this.name);
+		superSay.call(this);
+	}	
+	window.Student = Student;
+ }());
+		var s = new Student("wushiyuan");
+
+	s.say();
+</script>
+</body>	
+</html>

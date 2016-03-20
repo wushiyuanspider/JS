@@ -1,0 +1,99 @@
+<html>
+<head>
+<!--2016-2-25-->	
+	<meta charset="utf-8">
+	<style>
+		/*内部样式方便使用*/
+		body{
+			margin: 0;
+			font-family: SimSun,Arial;	
+		}
+
+		#nav_box{
+			width: 1040px;
+			margin:0 auto;	
+			height: 42px;
+			background-color: F54343;
+		}
+		ul{
+			
+			list-style: none;
+			padding-left: 0;
+		}	
+		li{
+			
+			width: 46px;
+			height: 42px;
+			float: left;
+			background-color: F54343;
+			line-height: 42px;
+			padding-left: 15px;			
+		}
+
+		.defiber{
+			width: 1px;
+			height: 42px;
+			background-color: DA3C3C;
+			float: left;
+		}
+		a{
+			text-decoration: none;
+			color: white;
+			font-size: 18px;	
+		}	
+
+		#content_news,#content_video,#content_money{
+			width: 800px;
+			height: 600px;
+			background-color: pink;
+			display: none;
+		}
+	</style>
+</head>	
+
+<body>
+	<div id="nav" style="background-color: F54343;">
+		<div id="nav_box">
+			<ul>
+				<span class="defiber"></span>
+				<li><a onmouseover="news()" onmousemove="" href="#">资讯</a></li>
+				<span class="defiber"></span>
+				<li><a href="#">视频</a></li>
+				<span class="defiber"></span>
+				<li><a href="#">财经</a></li><span class="defiber"></span>
+				<li><a href="#">娱乐</a></li><span class="defiber"></span>
+				<li><a href="#">体育</a></li><span class="defiber"></span>
+				<li><a href="#">时尚</a></li><span class="defiber"></span>
+				<li><a href="#">汽车</a></li><span class="defiber"></span>
+				<li><a href="#">房产</a></li><span class="defiber"></span>
+				<li><a href="#">科技</a></li><span class="defiber"></span>
+				<li><a href="#">博报</a></li><span class="defiber"></span>
+				<li><a href="#">游戏</a></li><span class="defiber"></span>
+				<li><a href="#">彩票</a></li><span class="defiber"></span>
+				<li><a href="#">书城</a></li><span class="defiber"></span>
+				<li><a href="#">佛教</a></li><span class="defiber"></span>
+				<li style="width:120px;background:url(TV.png) no-repeat;"><a style="margin-left: 39px" href="#">凤凰卫视</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="content_news">
+		这是今天的资讯
+	</div>
+
+	<div id="content_video">
+		视频相关
+	</div>
+
+	<div id="content_money">
+		理财相关
+	</div>
+<!--JS实现简单的选项卡-->
+	<script>
+		var nobj = document.getElementById("content_news");	
+		function news(){
+				nobj.style.display = "block";//思路：通过SPAN标签获取子元素li对象，调用对象两事件，参数+回调函数	
+		}
+	</script>
+</body>	
+</html>	

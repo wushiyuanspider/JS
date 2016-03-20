@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>选项卡</title>
+
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+		font-family: "微软雅黑";
+		font-size: 14px;
+	}
+	
+	#card{
+		width: 300px;
+		height: 110px;
+		border: 1px solid #eee;
+		margin: 0 auto;
+	}
+
+	#tit{
+		width: 100%;
+		height: 28px;
+		background: #eee;
+	}
+
+	#tit ul{
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	#tit li{
+		text-decoration: none;
+		
+	}
+
+	#one{
+		background: white;
+	}
+
+	#tit a{
+		text-decoration: none;
+		width: 60px;
+		height: 28px;
+		line-height: 28px;
+		color: black;	
+		float: left;
+		text-align: center;
+	}
+	
+	#cont{
+		width: 100%;
+		height: 82px;
+		background: white;
+	}
+
+	
+
+	#cont ul{
+		margin: 0px;
+		list-style: none;
+		padding: 0px;
+	}
+
+	#cont li{
+		height: 20px;
+		line-height: 20px;
+		
+		
+	}
+	#cont a{
+		margin-left: 16px;	
+		
+
+	}
+
+	
+</style>
+</head>
+<body>
+	<div id="card">
+		<div id="tit">
+			<ul>
+				<li><a id="one" onmouseover="show(0)" href="#">公告</a></li>
+				<li><a href="#" onmouseover="show(1)">规则</a></li>
+				<li><a href="#" onmouseover="show(2)">论坛</a></li>
+				<li><a href="#" onmouseover="show(3)">游戏</a></li>
+				<li><a href="#" onmouseover="show(4)">安全</a></li>
+			</ul>
+		</div>
+
+		<div id="cont">
+			<div style="display: block">
+				<ul>
+					<li><a>简单的选项卡</a></li>
+					<li><a>一年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>一年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>一年级的时候我还是个羞涩的小女孩</a></li>
+				</ul>
+			</div>
+
+			<div style="display: none">
+				<ul>
+					<li><a>二年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>二年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>二年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>二年级的时候我还是个羞涩的小女孩</a></li>
+				</ul>
+			</div>
+
+			<div style="display: none">
+				<ul>
+					<li><a>三年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>三年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>三年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>三年级的时候我还是个羞涩的小女孩</a></li>
+				</ul>
+			</div>
+
+			<div style="display: none">
+				<ul>
+					<li><a>四年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>四年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>四年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>四年级的时候我还是个羞涩的小女孩</a></li>
+				</ul>
+			</div>
+
+			<div style="display:none">
+				<ul>
+					<li><a>五年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>五年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>五年级的时候我还是个羞涩的小女孩</a></li>
+					<li><a>五年级的时候我还是个羞涩的小女孩</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		var tobjs = document.getElementById("tit").getElementsByTagName("a")
+		var cobj = document.getElementById("cont").getElementsByTagName("div");
+		function show(num){	
+			for(var i = 0;i < tobjs.length;i ++){
+			
+				if(i == num){
+					tobjs[i].style.color = "red";	
+					tobjs[i].style.background = "white";
+					cobj[i].style.display = "block";						
+				}else{
+					tobjs[i].style.color = "";
+					tobjs[i].style.background = "none";
+					cobj[i].style.display = "none";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

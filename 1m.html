@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>原生js--控制div属性</title>
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#block{
+				width: 200px;
+				height: 200px;
+				background-color: green;
+				margin: 40px auto;
+			}
+
+			#but{
+				margin: 20px auto;
+				width: 242px;
+			}
+		</style>
+
+	
+	</head>
+
+	<body>
+		<div id="block"></div>
+		<div id="but">
+			<input type="button" onclick="addwid()" value="变宽">
+			<input type="button" onclick="addhei()" value="变高">
+			<input type="button" onclick="changc()" value="变色">
+			<input type="button" onclick="hid()" value="隐藏">
+			<input type="button" onclick="res()" value="重置">
+		</div>
+	</body>
+
+	<script>
+	
+		
+		var dobj = document.getElementById("block");
+	
+		var bobj = document.getElementsByTagName("input");
+
+		var oAtt = ["width","height","background","display","display"];
+
+		var oVal = ["400px","400px","red","none","block"];
+
+		function changeStyle(elem,attr,value){
+			elem.style[attr] = value;
+		}
+			
+		for(var i = 0;i < bobj.length;i ++){
+		
+				
+			bobj[i].index = i;
+		
+			bobj[i].onclick = function(){
+						
+				
+				changeStyle(dobj,oAtt[this.index],oVal[this.index]);
+				 this.index == bobj.length - 1 && (dobj.style.cssText = ""); // 这一行代码的主要功能就是让div的样式回到最初的状态；把刚刚所有添加的样式都清空了，当点击到最后一个按钮的时候，也就是oBtn.length-1 的时候；
+
+			}	
+		}
+	</script>
+</html>
+
