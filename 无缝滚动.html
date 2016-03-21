@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>大学仅有的</title>
+	<style>
+		*{margin: 0;padding: 0}
+		#div1{width: 648px;height: 178px;background: red;margin: 100px auto;position: relative;overflow: hidden;}
+		#div1 ul{position: absolute;top: 0;left: 0;}
+		#div1 ul li{list-style: none;float: left;width: 108px;height: 178px;}
+	</style>
+	<script>
+		onload = function(){
+			var timer;
+			var oDiv = document.getElementById('div1');
+			var oUl = oDiv.getElementsByTagName('ul');
+			var oLis = oDiv.getElementsByTagName('li');
+			oUl[0].innerHTML = oUl[0].innerHTML+oUl[0].innerHTML;
+			oUl[0].style.width = oLis[0].offsetWidth*oLis.length+'px';
+			timer = setInterval(autoPlay, 30);
+			function autoPlay(){
+					oUl[0].style.left = oUl[0].offsetLeft - 2 + 'px';
+					if(oUl[0].offsetLeft < -oUl[0].offsetWidth/2){
+						oUl[0].style.left = '0';
+					}
+			}
+			oDiv.onmouseover = function(){
+				clearInterval(timer);
+			};
+			oDiv.onmouseout = function(){
+				timer = setInterval(autoPlay, 30);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li><a href="http://pan.baidu.com/s/1gewvsdH"><img src="images/1.jpg"></a></li>
+			<li><a href="http://pan.baidu.com/s/1gewvsdH"><img src="images/2.jpg"></a></li>
+			<li><a href="http://pan.baidu.com/s/1gewvsdH"><img src="images/3.jpg"></a></li>
+			<li><a href="http://pan.baidu.com/s/1gewvsdH"><img src="images/4.jpg"></a></li>
+			<li><a href="http://pan.baidu.com/s/1gewvsdH"><img src="images/5.jpg"></a></li>
+			<li><a href="http://pan.baidu.com/s/1nu3AHPf"><img src="images/6.jpg"></a></li>
+		</ul>
+	</div>
+</body>
+</html>
