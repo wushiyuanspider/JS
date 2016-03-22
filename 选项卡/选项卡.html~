@@ -9,17 +9,38 @@
 			var oNoTit = document.getElementById('notice-tit');
 			var oLi = oNoTit.getElementsByTagName('li');
 			var oMod = document.getElementsByClassName('mod');
+			var num = null;
+			var timer = null;
 			for(var i = 0;i < oLi.length;i ++){
 				oLi[i].index = i;
+				setInterval(autoPlay, 1500);
+
+				clearInterval(timer);
+				timer = setInterval(autoPlay, 1500);
 				oLi[i].onmouseover = function(){
+					changeTab(this.index);
+				};
+
+				oLi[i].onmouseout = function(){
+					clearInterval(timer);
+					timer = setInterval(autoPlay, 1500)
+				};
+				function changeTab(currNum){
 					for(var j = 0;j < oLi.length;j ++){
 						oLi[j].className = " ";
-						oMod[this.index].style.display = "none";
-
+						oMod[j].style.display = "none";
 					}
-					oLi[j].className = "select";
-					oMod[this.index].style.display = "block";
-				}			
+					oLi[currNum].className = "select";
+					oMod[currNum].style.display = "block";
+					var num = currNum;
+				}
+				function autoPlay(){
+					num++;
+					if(num >= oLi.length){
+						num = 0;
+					}
+					changeTab(num);
+				}
 			}
 		};
 	</script>

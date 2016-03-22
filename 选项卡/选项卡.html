@@ -4,52 +4,29 @@
 	<meta charset="UTF-8">
 	<title>Tab切换-自动</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<script src="jquery.min.js"></script>
 	<script type="text/javascript">
-		window.onload = function(){
-			var oNoTit = document.getElementById('notice-tit');
-			var oLi = oNoTit.getElementsByTagName('li');
-			var oMod = document.getElementsByClassName('mod');
-			var num = null;
-			var timer = null;
-			for(var i = 0;i < oLi.length;i ++){
-				oLi[i].index = i;
-				setInterval(autoPlay, 1500);
-
-				clearInterval(timer);
-				timer = setInterval(autoPlay, 1500);
-				oLi[i].onmouseover = function(){
-					changeTab(this.index);
-				};
-
-				oLi[i].onmouseout = function(){
-					clearInterval(timer);
-					timer = setInterval(autoPlay, 1500)
-				};
-				function changeTab(currNum){
-					for(var j = 0;j < oLi.length;j ++){
-						oLi[j].className = " ";
-						oMod[j].style.display = "none";
-					}
-					oLi[currNum].className = "select";
-					oMod[currNum].style.display = "block";
-					var num = currNum;
-				}
-				function autoPlay(){
-					num++;
-					if(num >= oLi.length){
-						num = 0;
-					}
-					changeTab(num);
-				}
-			}
-		};
+		$(function(){
+//			console.log($('#notice-tit li')[0].style.background);
+			var $oLis = $('#notice-tit li');
+			var $oMods = $('.mod');
+//			console.log($oMods.length);
+			$oLis.click(function(){
+				$(this).addClass('select');
+				$(this).siblings().removeClass("select");
+				var index = $oLis.index(this);
+//				$oMods.eq(index).show();
+				$oMods.siblings().hide();
+				$oMods[index].style.display = 'block';
+			});
+		})
 	</script>
 </head>
 <body>
 	<div id="notice" class="notice">
 		<div id="notice-tit" class="notice-tit">
 		  <ul>
-		  	<li class="select">
+		  	<li class="select" style="background: red">
 		  		<a href="#">公告</a>
 		  	</li>
 		  	<li>
@@ -177,6 +154,61 @@
                           购后送店铺红
 						</a>
 					</li>
+				</ul>
+			</div>
+            <div class="mod" style="display:none">
+				<ul>
+					<li>
+						<a href="#">
+                          个人重要信息要管牢！
+						</a>
+					</li>
+                    <li>
+						<a href="#">
+                           卖家防范红包欺诈提醒
+						</a>
+					</li>
+					<li>
+						<a href="#">
+                            更换收货地址的陷阱！
+						</a>
+					</li>
+	                <li>
+                        <a href="#">
+                           注意骗子的技术升级了！
+						</a>
+					</li>
+				</ul>
+			</div>
+            <div class="mod" style="display:none">
+				<ul>
+					<li>
+						<a href="#">
+                          走进无声课堂
+						</a>
+					</li>
+                    <li>
+						<a href="#">
+                           淘宝之行大众评审赢公益金
+						</a>
+					</li>
+					<li>
+						<a href="#">
+                            爱心品牌联合征集
+						</a>
+					</li>
+	                <li>
+                        <a href="#">
+                           名公益机构淘宝开店攻略
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
 				</ul>
 			</div>
             <div class="mod" style="display:none">
