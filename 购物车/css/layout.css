@@ -1,0 +1,9 @@
+*{padding: 0;margin: 0;font-size: 14px;font-family: '微软雅黑';text-align: center;}
+table{margin: 0 auto;}
+table thead .allselect{}
+table tbody img{width: 102px;height: 81px}
+table tbody input{width: 50px;}
+table tbody a{text-decoration: none}
+table tbody .reduce {border: 1px solid #eee;width: 18px;background: gainsboro;height: 18px;display: none;}
+table tbody .add {border: 1px solid #eee;width: 18px;background: gainsboro;height: 18px;display: inline-block}
+table tbody .goods{display: inline;position: relative;bottom: 33px;}
