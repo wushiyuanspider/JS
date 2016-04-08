@@ -63,20 +63,20 @@ onload = function () {
         oTr.getElementsByTagName('a')[1].onclick = function () {
             switch (this.innerHTML){
                 case '删除':
-                    var info = confirm('确认删除吗？')
+                    var info = confirm('确认删除吗？');
                     if(info == true){
                         oTab.tBodies[0].removeChild(this.parentNode.parentNode);
                     }
                     break;
                 case '取消':
                     this.innerHTML = '删除';
-                    this.previousSibling.innerHTML = '修改'
+                    this.previousSibling.innerHTML = '修改';
                     var addTd = this.parentNode.parentNode.getElementsByClassName('addTd');
-                    addTd[1].innerHTML = bN;
-                    addTd[2].innerHTML = cF;
-                    addTd[3].innerHTML = pR;
-                    addTd[4].innerHTML = pri;
-                    addTd[5].innerHTML = inf;
+                    addTd[1].innerHTML = bN? bN : bookName.value;
+                    addTd[2].innerHTML = cF? cF : classify.value;
+                    addTd[3].innerHTML = pR? pR : press.value;
+                    addTd[4].innerHTML = pri? pri : price.value;
+                    addTd[5].innerHTML = inf? inf : remark.value;
                     break;
             }
         };
